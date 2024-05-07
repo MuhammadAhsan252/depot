@@ -1,0 +1,16 @@
+<fieldset data-payment-target="additionalFields" data-type="Credit card">
+    <div class="my-5">
+        <%= form.label :credit_card_number %>
+        <%= form.text_field :credit_card_number, class: "input-field" %>
+    </div>
+
+    <div class="my-5">
+        <%= form.label :expiration_date %>
+        <%= form.date_select :expiration_date, discard_day: true, start_year: Date.today.year, end_year: Date.today.year + 10, class: "input-field" %>
+    </div>
+
+    <div class="my-5">
+        <%= form.label :cvv %>
+        <%= form.text_field :cvv, class: "input-field" %>
+    </div>
+</fieldset>

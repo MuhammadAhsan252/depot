@@ -5,4 +5,16 @@ class Product < ApplicationRecord
         with: %r{\.(jpg|jpeg|png|gif)\z}i,
         message: "Must be a url of gif, png, jpg"
     }
+
+    has_many :line_items
+
+    before_destroy :ensure_not_referenced_by_any_line_item
+
+    private
+    def ensure_not_referenced_by_any_line_item
+        unless line_items.empty?
+            errors.add(:base, 'Line Items present')
+            throw :abort
+        end
+    end
 end
